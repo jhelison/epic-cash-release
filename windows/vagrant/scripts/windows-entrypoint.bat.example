@@ -1,11 +1,12 @@
 set repo=bash_repo
+set branch=bash_branch
 set project=bash_project
 
 mkdir C:\apps
 cd C:\apps
 
 @REM Clone the repository and build
-git clone %repo%
+git clone -b %branch% %repo%
 cd %project%
 git submodule update --init --recursive
 cargo update

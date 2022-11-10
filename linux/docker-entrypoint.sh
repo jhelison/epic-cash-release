@@ -2,7 +2,7 @@
 source $HOME/.cargo/env
 
 # Clone the repository
-git clone $1
+git clone -b $2 $1
 
 # Prepare cargo and build the deb
 cd $(echo $1 | cut -d'/' -f5 | cut -d'.' -f1)

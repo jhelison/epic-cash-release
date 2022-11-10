@@ -7,6 +7,7 @@
 # 	Uses two variables as arguments:
 #		version: Version of the build Semantic Versioning (Used on file naming)
 #		repo: The repository to be built
+#		branch: Optinal argument defining the branch, defaults to master
 #	The results are outputted to output/<project>/<version>/
 #		The results are zipped and a checksum 256 file is created
 
@@ -17,6 +18,8 @@ linux_out_dir = $(current_dir)/linux
 linux_file_name = $(project_name)-$(version)-linux
 windows_file_name = $(project_name)-$(version)-windows
 final_output_dir = $(current_dir)/output/$(project_name)/$(version)
+
+branch ?= master
 
 # Initialize both docker image and Vagrant box
 init:
@@ -50,7 +53,7 @@ build-windows:
 
 # Build the linux release and them copy the files
 build-linux:
-	docker run -v $(current_dir)/linux:/home/app/output epic-linux-release $(repo)
+	docker run -v $(current_dir)/linux:/home/app/output epic-linux-release $(repo) $(branch)
 
 	# Move and zip the output
 	mv $(linux_out_dir)/*.deb $(final_output_dir)/$(linux_file_name).deb
@@ -60,6 +63,7 @@ build-linux:
 windows-entrypoint-init:
 	yes | cp -rf $(windows_out_dir)/scripts/windows-entrypoint.bat.example $(windows_out_dir)/scripts/windows-entrypoint.bat
 	sed -i 's,bash_repo,${repo},' $(windows_out_dir)/scripts/windows-entrypoint.bat
+	sed -i 's,bash_branch,${branch},' $(windows_out_dir)/scripts/windows-entrypoint.bat
 	sed -i 's,bash_project,${project_name},' $(windows_out_dir)/scripts/windows-entrypoint.bat
 
 # Build the sha256sum
