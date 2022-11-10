@@ -1,0 +1,27 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && apt install -y \
+    build-essential=12.9ubuntu3 \
+    debhelper=13.6ubuntu1 \
+    cmake=3.22.1-1ubuntu1.22.04.1 \
+    libclang-dev=1:14.0-55~exp2 \
+    libncurses5-dev=6.3-2 \
+    clang=1:14.0-55~exp2 \
+    libncursesw5-dev=6.3-2 \
+    opencl-headers=3.0~2022.01.04-1 \
+    libssl-dev=3.0.2-0ubuntu1.7 \
+    pkg-config=0.29.2-1ubuntu3 \
+    ocl-icd-opencl-dev=2.2.14-3 \
+    git=1:2.34.1-1ubuntu1.5
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+SHELL ["/bin/bash", "-c"]
+RUN source $HOME/.cargo/env && rustup default 1.57.0
+
+WORKDIR /home/app
+RUN mkdir ouput
+
+COPY ./docker-entrypoint.sh ./
+RUN chmod +x ./docker-entrypoint.sh
+
+ENTRYPOINT ["./docker-entrypoint.sh"]

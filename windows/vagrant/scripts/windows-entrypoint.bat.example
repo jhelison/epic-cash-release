@@ -1,0 +1,16 @@
+set repo=bash_repo
+set project=bash_project
+
+mkdir C:\apps
+cd C:\apps
+
+@REM Clone the repository and build
+git clone %repo%
+cd %project%
+git submodule update --init --recursive
+cargo update
+cargo build --release
+
+@REM Cleanup after the build
+xcopy .\target\release\*.exe C:\vagrant /K /D /H /Y
+rd /s /q "C:\apps"

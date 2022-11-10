@@ -1,0 +1,7 @@
+.vagrant
+*.box
+*.deb
+*.exe
+
+output/*
+windows-entrypoint.bat
