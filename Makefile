@@ -17,6 +17,7 @@ windows_out_dir = $(current_dir)/windows/vagrant
 linux_out_dir = $(current_dir)/linux
 linux_file_name = $(project_name)-$(version)-linux
 windows_file_name = $(project_name)-$(version)-windows
+checksum_file_name = $(project_name)-$(version)-sha256sum
 final_output_dir = $(current_dir)/output/$(project_name)/$(version)
 
 branch ?= master
@@ -34,14 +35,16 @@ init:
 # Must be executed as: make build version=<version_of_the_build> repo=<repository_of_the_build>
 # Ex: make build version=3.0.0 repo=https://github.com/EpicCash/epic.git
 build:
-	mkdir -p $(final_output_dir)
-	$(MAKE) windows-entrypoint-init
 	$(MAKE) build-windows
 	$(MAKE) build-linux
 	$(MAKE) build-sha256sum
 
 # Build the windows release and them copy the files
 build-windows:
+	mkdir -p $(final_output_dir)
+
+	$(MAKE) windows-entrypoint-init
+
 	cd $(windows_out_dir) && \
 	vagrant up --no-provision && \
 	vagrant provision && \
@@ -53,6 +56,7 @@ build-windows:
 
 # Build the linux release and them copy the files
 build-linux:
+	mkdir -p $(final_output_dir)
 	docker run -v $(current_dir)/linux:/home/app/output epic-linux-release $(repo) $(branch)
 
 	# Move and zip the output
@@ -68,5 +72,5 @@ windows-entrypoint-init:
 
 # Build the sha256sum
 build-sha256sum:
-	sha256sum $(final_output_dir)/* > $(final_output_dir)/sha256sum-$(version).txt
-	sed -i 's,$(final_output_dir)/,,' $(final_output_dir)/sha256sum-$(version).txt
+	sha256sum $(final_output_dir)/* > $(final_output_dir)/$(checksum_file_name).txt
+	sed -i 's,$(final_output_dir)/,,' $(final_output_dir)/$(checksum_file_name).txt
