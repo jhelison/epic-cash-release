@@ -12,7 +12,10 @@ RUN apt-get update && apt install -y \
     libssl-dev=3.0.2-0ubuntu1.7 \
     pkg-config=0.29.2-1ubuntu3 \
     ocl-icd-opencl-dev=2.2.14-3 \
-    git=1:2.34.1-1ubuntu1.5
+    git=1:2.34.1-1ubuntu1.5 \
+    zlib1g-dev \
+    vim \
+    wget
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 SHELL ["/bin/bash", "-c"]
@@ -24,4 +27,4 @@ RUN mkdir ouput
 COPY ./docker-entrypoint.sh ./
 RUN chmod +x ./docker-entrypoint.sh
 
-ENTRYPOINT ["./docker-entrypoint.sh"]
+# ENTRYPOINT ["./docker-entrypoint.sh"]

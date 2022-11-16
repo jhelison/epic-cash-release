@@ -1,0 +1,19 @@
+  running: "cmake" "/root/.cargo/git/checkouts/randomx-rust-c564eeb6fef2eb06/a852669/randomx" "-DCMAKE_TOOLCHAIN_FILE=/home/app/TC-darwin.cmake" "-DCMAKE_INSTALL_PREFIX=/home/app/epic-wallet/target/x86_64-apple-darwin/debug/build/randomx-aa12d70a40449dc3/out" "-DCMAKE_C_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_CXX_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_ASM_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_BUILD_TYPE=Debug"
+
+  running: "cmake" "/root/.cargo/git/checkouts/randomx-rust-c564eeb6fef2eb06/a852669/randomx" "-DCMAKE_INSTALL_PREFIX=/home/app/epic-wallet/target/x86_64-apple-darwin/debug/build/randomx-aa12d70a40449dc3/out" "-DCMAKE_C_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_C_COMPILER=/home/app/osxcross/target/bin/o64-clang" "-DCMAKE_CXX_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_CXX_COMPILER=/home/app/osxcross/target/bin/o64-clang++" "-DCMAKE_ASM_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_ASM_COMPILER=/home/app/osxcross/target/bin/o64-clang" "-DCMAKE_BUILD_TYPE=Debug"
+
+  running: "cmake" "/root/.cargo/git/checkouts/randomx-rust-c564eeb6fef2eb06/a852669/randomx" "-DCMAKE_INSTALL_PREFIX=/home/app/epic-wallet/target/x86_64-apple-darwin/debug/build/randomx-aa12d70a40449dc3/out" "-DCMAKE_C_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_C_COMPILER=/home/app/osxcross/target/bin/o64-clang" "-DCMAKE_CXX_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_CXX_COMPILER=/home/app/osxcross/target/bin/o64-clang++" "-DCMAKE_ASM_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_ASM_COMPILER=/home/app/osxcross/target/bin/o64-clang" "-DCMAKE_BUILD_TYPE=Debug"
+
+    running: "cmake" "/root/.cargo/git/checkouts/randomx-rust-c564eeb6fef2eb06/a852669/randomx" "-DCMAKE_TOOLCHAIN_FILE=/home/app/TC-darwin.cmake" "-DCMAKE_INSTALL_PREFIX=/home/app/epic-wallet/target/x86_64-apple-darwin/debug/build/randomx-aa12d70a40449dc3/out" "-DCMAKE_C_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_CXX_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_ASM_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=x86_64-apple-darwin" "-DCMAKE_BUILD_TYPE=Debug"
+
+CMAKE_TOOLCHAIN_FILE=/home/app/TC-darwin.cmake
+
+
+PATH="/home/app/osxcross/target/bin:$PATH" CC=o64-clang CXX=o64-clang++ CMAKE_TOOLCHAIN_FILE=/home/app/TC-darwin.cmake cargo build --target x86_64-apple-darwin
+PATH="/home/app/osxcross/target/bin:$PATH" CC=/usr/bin/cc CXX=/usr/bin/c++ CMAKE_TOOLCHAIN_FILE=/home/app/TC-darwin.cmake cargo build --target x86_64-apple-darwin
+
+  See also "/home/app/randomx-rust/target/x86_64-apple-darwin/debug/build/randomx-2d0f9cb5b16c0983/out/build/CMakeFiles/CMakeOutput.log".
+  See also "/home/app/randomx-rust/target/x86_64-apple-darwin/debug/build/randomx-2d0f9cb5b16c0983/out/build/CMakeFiles/CMakeError.log".
+
+
+https://wapl.es/rust/2019/02/17/rust-cross-compile-linux-to-macos.html
